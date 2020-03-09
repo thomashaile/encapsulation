@@ -13,17 +13,15 @@
 
 * [Module Summary](#module-summary)
 * [Learning Objectives](#learning-objectives)
-* [Example Projects](#./example-projects)
-* [Homework Submission](https://github.com/hackyourfuturebelgium/homework-submission) (external)
+* [Example Projects](./example-projects)
 * [Week 1](./week-1)
   * [Prep Work](./week-1#prep-work)
   * [Lesson Plan](https://hackyourfuture.be/encapsulation/week-1)
   * [Assignments](./week-1#assignments)
 * Week 2
 * Week 3
-* [Deeper Dives](./deeper-dives.md)
-* [Class Recordings](./class-recordings.md)
 * [Study Links](https://study.hackyourfuture.be) (external)
+* [Homework Submission](https://github.com/hackyourfuturebelgium/homework-submission) (external)
 
 ---
 
