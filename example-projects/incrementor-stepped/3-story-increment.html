@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>incrementor</title>
+  <style></style>
+  <script id='app'>
+    const incrementor = {
+      current: 0,
+      stepSize: 1,
+      increment: function () {
+        const newCurrent = this.current + this.stepSize;
+        this.current = newCurrent;
+      }
+    };
+  </script>
+  <script id='log'>
+    const log = [];
+  </script>
+  <script id='init'>
+    window.onload = () => {
+      const initialItem = renderInitialValue(incrementor.current);
+      document.getElementById('steps-history').appendChild(initialItem);
+      log.push({
+        initialState: JSON.parse(JSON.stringify(incrementor))
+      });
+    };
+  </script>
+  <script id='views'>
+    function renderInitialValue(current) {
+      const initialLi = document.createElement('li');
+      initialLi.innerHTML = current;
+      return initialLi;
+    }
+    function renderStep(stepSize, value) {
+      const li = document.createElement('li');
+      li.innerHTML = '... + ' + stepSize + ' = ' + value;
+      return li;
+    }
+  </script>
+  <script id='handlers'>
+    function incrementHandler() {
+      debugger;
+      // call app method
+      incrementor.increment();
+      // update DOM from state
+      const newStepComponent = renderStep(incrementor.stepSize, incrementor.current);
+      document.getElementById('steps-history').appendChild(newStepComponent);
+      //  PS. JSON.stringify ignores methods!
+      log.push({
+        interaction: 'increment',
+        newState: JSON.parse(JSON.stringify(incrementor))
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <section id='user-interface'>
+    <button id='increment-button'>increment</button> <br>
+    <ul id='steps-history'></ul>
+  </section>
+
+  <script id='listeners'>
+    document.getElementById('increment-button').addEventListener('click', incrementHandler);
+  </script>
+</body>
+
+</html>
