@@ -63,9 +63,10 @@ Starting with the exercises will make it easier to complete the project.  Spendi
 
 This week's project is to study the [`practical-javascript`](https://watchandcode.com/p/practical-javascript) tutorial from Watch and Code.  It's easily one of the best tutorials out there.
 
-But wait,  Copying Gordon's code is not enough!  You will be expected to turn in your code from his tutorial on a new repository called `practical-javascript`, cleanly developed with one branch per version / extra lesson.   After completing the tutorial, there's still one more step:
+But wait,  Copying Gordon's code is not enough!  You will be expected to turn in your code from his tutorial on a new repository called `practical-javascript`, cleanly developed with one branch per version / extra lesson.   After completing the tutorial, there's still two more step:
 
 * Refactor your code from the final version of the project (1 file) into the folder structure you learned in class.
+* Write a `development-strategy.md` file to explain the steps Gordon used to develop the project in this tutorial
 
 You will be assessed not only on your live demo, but also on the quality of your code, the correctness of your branches, the organization of your code, and the completeness of your README.
 

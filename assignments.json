@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "name": "practical-javascript",
+      "live": true,
+      "endpoints": [
+        "development-strategy.md"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "name": "functions-to-methods",
+      "live": false,
+      "endpoints": [
+        "REVIEW.md"
+      ]
+    },
+    {
+      "name": "numbery-organizer",
+      "live": true,
+    },
+    {
+      "name": "getters-and-setters",
+      "live": false,
+      "endpoints": [
+        "REVIEW.md"
+      ]
+    }
+  ]
+}
