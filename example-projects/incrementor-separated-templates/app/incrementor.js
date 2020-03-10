@@ -8,13 +8,9 @@ const incrementor = {
     this.current = newCurrent;
   },
   renderCurrent: function () {
-    const li = document.createElement('li');
-    li.innerHTML = this.current;
-    return li;
+    return `<li>${this.current}</li>`;
   },
   renderStep: function () {
-    const li = document.createElement('li');
-    li.innerHTML = `... + ${this.stepSize} = ${this.current}`;
-    return li;
+    return `<li>... + ${this.stepSize} = ${this.current}</li>`;
   }
 };

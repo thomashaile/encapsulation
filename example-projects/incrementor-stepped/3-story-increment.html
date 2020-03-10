@@ -12,6 +12,16 @@
       increment: function () {
         const newCurrent = this.current + this.stepSize;
         this.current = newCurrent;
+      },
+      renderCurrent: function () {
+        const initialLi = document.createElement('li');
+        initialLi.innerHTML = this.current;
+        return initialLi;
+      },
+      renderStep: function (stepSize, value) {
+        const li = document.createElement('li');
+        li.innerHTML = '... + ' + this.stepSize + ' = ' + this.current;
+        return li;
       }
     };
   </script>
@@ -20,39 +30,12 @@
   </script>
   <script id='init'>
     window.onload = () => {
-      const initialItem = renderInitialValue(incrementor.current);
+      const initialItem = incrementor.renderCurrent();
       document.getElementById('steps-history').appendChild(initialItem);
       log.push({
         initialState: JSON.parse(JSON.stringify(incrementor))
       });
     };
-  </script>
-  <script id='views'>
-    function renderInitialValue(current) {
-      const initialLi = document.createElement('li');
-      initialLi.innerHTML = current;
-      return initialLi;
-    }
-    function renderStep(stepSize, value) {
-      const li = document.createElement('li');
-      li.innerHTML = '... + ' + stepSize + ' = ' + value;
-      return li;
-    }
-  </script>
-  <script id='handlers'>
-    function incrementHandler() {
-      debugger;
-      // call app method
-      incrementor.increment();
-      // update DOM from state
-      const newStepComponent = renderStep(incrementor.stepSize, incrementor.current);
-      document.getElementById('steps-history').appendChild(newStepComponent);
-      //  PS. JSON.stringify ignores methods!
-      log.push({
-        interaction: 'increment',
-        newState: JSON.parse(JSON.stringify(incrementor))
-      });
-    }
   </script>
 </head>
 
@@ -62,7 +45,20 @@
     <ul id='steps-history'></ul>
   </section>
 
-  <script id='listeners'>
+  <script id='interactions'>
+    function incrementHandler() {
+      debugger;
+      // call app method, no user input!
+      incrementor.increment();
+      // update DOM from state
+      const newStepComponent = incrementor.renderStep();
+      document.getElementById('steps-history').appendChild(newStepComponent);
+      //  PS. JSON.stringify ignores methods
+      log.push({
+        interaction: 'increment',
+        newState: JSON.parse(JSON.stringify(incrementor))
+      });
+    }
     document.getElementById('increment-button').addEventListener('click', incrementHandler);
   </script>
 </body>

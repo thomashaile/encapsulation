@@ -6,7 +6,7 @@ function incrementHandler() {
 
   // update DOM from state
   const renderedStep = incrementor.renderStep();
-  document.getElementById('steps-history').appendChild(renderedStep);
+  document.getElementById('steps-history').innerHTML += renderedStep;
 
   // log interaction
   //  PS. JSON.stringify ignores methods!

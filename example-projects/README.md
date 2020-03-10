@@ -6,9 +6,8 @@ In this module you will be learning to organize your code into _objects_, groupi
 
 A working project is not enough! For projects in this module we will expect you to turn in code that is well organized & documented according to it's role.  Your projects should have these directories:
 
-* `/app`: the main object for your project - this will have the _data_ & _logic_ for your project
+* `/app`: the main object for your project - this will have the _data_, _logic_ & _views_ for your project
 * `/interactions`: the handlers & listeners, which call your object and interact with the DOM
-* `/views`: all DOM component functions for rendering your state
 * `style.css`: the CSS for your web page
 * `index.html`: the initial DOM for your user interface, script tags & style tag
 * `log.js`: the initial empty log for your project.
@@ -39,6 +38,6 @@ For each user story, try following these steps at first until you find a process
 1. __What can a user do on your web site?__ Write a user story to describe a user's interaction with your website
 1. __What data is necessary for these user stories?__  Add new data fields to your object (if necessary)
 1. __What must a user be able to do with this data?__ Write & test the logic to enable these interactions (as an object method).
+1. __How does the UI display *state*?__ Write (or reuse) the DOM component methods needed to render changes in state
 1. __How does the project enable *user interactions*__ Write listeners & handlers that allow users to interact with your object (use console.log instead of the DOM at first)
-1. __How does the UI display *state*?__ Write (or reuse) the DOM component needed to render changes in state
 

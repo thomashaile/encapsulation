@@ -9,8 +9,7 @@ function resetHandler() {
   document.getElementById('step-size-input').value = incrementor.stepSize;
 
   const renderedCurrent = incrementor.renderCurrent();
-  document.getElementById('steps-history').innerHTML = '';
-  document.getElementById('steps-history').appendChild(renderedCurrent);
+  document.getElementById('steps-history').innerHTML = renderedCurrent;
 
   // log interaction
   //  PS. JSON.stringify ignores methods!

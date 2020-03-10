@@ -8,7 +8,12 @@
   <script id='app'>
     const incrementor = {
       current: 0,
-      stepSize: 1
+      stepSize: 1,
+      renderCurrent: function () {
+        const initialLi = document.createElement('li');
+        initialLi.innerHTML = this.current;
+        return initialLi;
+      }
     };
   </script>
   <script id='log'>
@@ -17,7 +22,7 @@
   <script id='init'>
     window.onload = () => {
       // render initial state to DOM
-      const initialItem = renderInitialValue(incrementor.current);
+      const initialItem = incrementor.renderCurrent();
       document.getElementById('steps-history').appendChild(initialItem);
       //  PS. JSON.stringify ignores methods!
       log.push({
@@ -25,14 +30,6 @@
       });
     };
   </script>
-  <script id='views'>
-    function renderInitialValue(current) {
-      const initialLi = document.createElement('li');
-      initialLi.innerHTML = current;
-      return initialLi;
-    }
-  </script>
-  <script id='handlers'></script>
 </head>
 
 <body>
@@ -40,7 +37,7 @@
     <ul id='steps-history'></ul>
   </section>
 
-  <script id='listeners'></script>
+  <script id='interactions'></script>
 </body>
 
 </html>

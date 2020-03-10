@@ -12,6 +12,16 @@
       increment: function () {
         const newCurrent = this.current + this.stepSize;
         this.current = newCurrent;
+      },
+      renderCurrent: function () {
+        const initialLi = document.createElement('li');
+        initialLi.innerHTML = this.current;
+        return initialLi;
+      },
+      renderStep: function (stepSize, value) {
+        const li = document.createElement('li');
+        li.innerHTML = '... + ' + this.stepSize + ' = ' + this.current;
+        return li;
       }
     };
   </script>
@@ -19,41 +29,44 @@
     const log = [];
   </script>
   <script id='init'>
-    window.onload = () => { // !!! updated init code to set initial step size!
+    window.onload = () => {
       document.getElementById('step-size-input').value = incrementor.stepSize;
-      const initialItem = renderInitialValue(incrementor.current);
+      const initialItem = incrementor.renderCurrent();
       document.getElementById('steps-history').appendChild(initialItem);
       log.push({
         initialState: JSON.parse(JSON.stringify(incrementor))
       });
     };
   </script>
-  <script id='views'>
-    function renderInitialValue(current) {
-      const initialLi = document.createElement('li');
-      initialLi.innerHTML = current;
-      return initialLi;
-    }
-    function renderStep(stepSize, value) {
-      const li = document.createElement('li');
-      li.innerHTML = '... + ' + stepSize + ' = ' + value;
-      return li;
-    }
-  </script>
-  <script id='handlers'>
+</head>
+
+<body>
+  <section id='user-interface'>
+    <form>
+      <input id='step-size-input' type='number' name='newStepSize' /> <br>
+      <input id='set-step-size-button' type='button' value='set step size' /> <br>
+    </form>
+    <hr>
+    <button id='increment-button'>increment</button> <br>
+    <ul id='steps-history'></ul>
+  </section>
+
+  <script id='interactions'>
     function incrementHandler() {
       incrementor.increment();
-      const newStepComponent = renderStep(incrementor.stepSize, incrementor.current);
+      const newStepComponent = incrementor.renderStep();
       document.getElementById('steps-history').appendChild(newStepComponent);
       log.push({
         interaction: 'increment',
         newState: JSON.parse(JSON.stringify(incrementor))
       });
     }
-    function setStepSizeHandler() {
+    document.getElementById('increment-button').addEventListener('click', incrementHandler);
+
+    function setStepSizeHandler(event) {
       debugger;
       // read user input from DOM
-      const newStepSizeStr = document.getElementById('step-size-input').value;
+      const newStepSizeStr = event.target.form.newStepSize.value;
       const newStepSize = Number(newStepSizeStr);
       // update state
       incrementor.stepSize = newStepSize;
@@ -64,20 +77,6 @@
         newState: JSON.parse(JSON.stringify(incrementor))
       });
     }
-  </script>
-</head>
-
-<body>
-  <section id='user-interface'>
-    <input id='step-size-input' type='number' /> <br>
-    <button id='set-step-size-button'>set step size</button> <br>
-    <hr>
-    <button id='increment-button'>increment</button> <br>
-    <ul id='steps-history'></ul>
-  </section>
-
-  <script id='listeners'>
-    document.getElementById('increment-button').addEventListener('click', incrementHandler);
     document.getElementById('set-step-size-button').addEventListener('click', setStepSizeHandler);
   </script>
 </body>
