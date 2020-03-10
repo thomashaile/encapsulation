@@ -29,9 +29,9 @@
 
 __Encapsulation__ is the idea of grouping together your data with the functions that use it. That's it! (for now :)  There are many ways to achieve this, but the end result is code that is easier to understand and nicer work with.
 
-Heads up!  In this module you'll be encountering some of the most important (and most challenging!) aspects of the JavaScript language: closure, `this` & inheritance.  These are all features of JS that allow you to encapsulate functions & data for readable, reusable code.
+Heads up!  In this module you'll be encountering some of the most important (and most challenging!) aspects of the JavaScript language `this`, inheritance & classes.  These are all features of JS that allow you to encapsulate functions & data for readable, reusable code.
 
-Along the way you will get your first introduction to the main programming paradigms in JS: _functional_ and _object oriented_.  At their simplest level, programming paradigms are just different answers to the same question "How will I group my data and my functions?".
+Along the way you will get your first introduction to one of the main programming paradigms in JS: _object oriented_.  At their simplest level, programming paradigms are just different answers to the same question "How will I group my data and my functions?".
 
 [TOP](#overview)
 
@@ -70,15 +70,9 @@ Along the way you will get your first introduction to the main programming parad
   * Be able to refactor methods into functions
   * Plan and implement objects based on User Stories
 * Understand `getters` and `setters`
-* Understand `prototypical inheritance`
-  * Explain how the _prototype look-up chain_ works in JavaScript
-  * Use constructor functions to create re-usable methods
 * Understand the `class` keyword
   * Be able to refactor between constructor functions & classes
   * Use classes to create simple programs
-* Understand `closure`
-  * Explain how closure can be used to share data between functions
-  * Solve basic exercises that use closure to share state between functions
 
 ### Integrating JavaScript (JS embedded in applications)
 
