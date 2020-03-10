@@ -47,7 +47,9 @@ Starting with the exercises will make it easier to complete the project.  Spendi
 
 #### Integrating JavaScript
 
-* None this week, `practical-javascript` is outstanding on it's own. Study it well!
+* Complete 2 [JavaScript 30](https://javascript30.com/) challenges, your choice!
+  * Or mostly your choice. Complete ones that use JS, not just HTML & CSS
+  * Link to the repositories with your finished code & notes in your homework issue
 
 #### Challenge Exercises
 

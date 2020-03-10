@@ -26,6 +26,10 @@
       "endpoints": [
         "REVIEW.md"
       ]
+    },
+    {
+      "name": "JavaScript 30, 6 of your choice",
+      "live": "https//javascript30.com/"
     }
   ]
 }
