@@ -9,11 +9,10 @@ function incrementHandler() {
   document.getElementById('steps-history').innerHTML += renderedStep;
 
   // log interaction
-  //  PS. JSON.stringify ignores methods!
   log.push({
     interaction: 'increment',
     renderedStep,
-    newState: JSON.parse(JSON.stringify(incrementor))
+    newState: JSON.parse(JSON.stringify(incrementor.state))
   });
 }
 document.getElementById('increment-button').addEventListener('click', incrementHandler);

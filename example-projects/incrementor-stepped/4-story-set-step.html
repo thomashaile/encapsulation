@@ -7,20 +7,23 @@
   <style></style>
   <script id='app'>
     const incrementor = {
-      current: 0,
-      stepSize: 1,
+      state: {
+        current: 0,
+        stepSize: 1,
+      },
       increment: function () {
-        const newCurrent = this.current + this.stepSize;
-        this.current = newCurrent;
+        const newCurrent = this.state.current + this.state.stepSize;
+        this.state.current = newCurrent;
       },
       renderCurrent: function () {
         const initialLi = document.createElement('li');
-        initialLi.innerHTML = this.current;
+        initialLi.innerHTML = this.state.current;
         return initialLi;
       },
       renderStep: function (stepSize, value) {
         const li = document.createElement('li');
-        li.innerHTML = '... + ' + this.stepSize + ' = ' + this.current;
+        li.innerHTML = '... + ' + this.state.stepSize
+          + ' = ' + this.state.current;
         return li;
       }
     };
@@ -29,14 +32,17 @@
     const log = [];
   </script>
   <script id='init'>
-    window.onload = () => {
-      document.getElementById('step-size-input').value = incrementor.stepSize;
+    function initialize() {
+      // this line is new
+      document.getElementById('step-size-input').value = incrementor.state.stepSize;
       const initialItem = incrementor.renderCurrent();
       document.getElementById('steps-history').appendChild(initialItem);
       log.push({
-        initialState: JSON.parse(JSON.stringify(incrementor))
+        initialItem,
+        initialState: JSON.parse(JSON.stringify(incrementor.state))
       });
     };
+    window.onload = initialize;
   </script>
 </head>
 
@@ -58,7 +64,8 @@
       document.getElementById('steps-history').appendChild(newStepComponent);
       log.push({
         interaction: 'increment',
-        newState: JSON.parse(JSON.stringify(incrementor))
+        newStepComponent,
+        newState: JSON.parse(JSON.stringify(incrementor.state))
       });
     }
     document.getElementById('increment-button').addEventListener('click', incrementHandler);
@@ -69,12 +76,12 @@
       const newStepSizeStr = event.target.form.newStepSize.value;
       const newStepSize = Number(newStepSizeStr);
       // update state
-      incrementor.stepSize = newStepSize;
-      //  PS. JSON.stringify ignores methods!
+      incrementor.state.stepSize = newStepSize;
+
       log.push({
         interaction: 'set step size',
         newStepSize,
-        newState: JSON.parse(JSON.stringify(incrementor))
+        newState: JSON.parse(JSON.stringify(incrementor.state))
       });
     }
     document.getElementById('set-step-size-button').addEventListener('click', setStepSizeHandler);

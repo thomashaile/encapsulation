@@ -1,14 +1,14 @@
 function init() {
   // render initial state to DOM
-  document.getElementById('step-size-input').value = incrementor.stepSize;
+  document.getElementById('step-size-input').value = incrementor.state.stepSize;
 
   const renderedCurrent = incrementor.renderCurrent();
   document.getElementById('steps-history').innerHTML = renderedCurrent;
 
   // log interaction
-  //  PS. JSON.stringify ignores methods!
   log.push({
-    initialState: JSON.parse(JSON.stringify(incrementor))
+    renderedCurrent,
+    initialState: JSON.parse(JSON.stringify(incrementor.state))
   });
 };
 

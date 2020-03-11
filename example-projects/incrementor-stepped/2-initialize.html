@@ -7,11 +7,13 @@
   <style></style>
   <script id='app'>
     const incrementor = {
-      current: 0,
-      stepSize: 1,
+      state: {
+        current: 0,
+        stepSize: 1,
+      },
       renderCurrent: function () {
         const initialLi = document.createElement('li');
-        initialLi.innerHTML = this.current;
+        initialLi.innerHTML = this.state.current;
         return initialLi;
       }
     };
@@ -20,15 +22,17 @@
     const log = [];
   </script>
   <script id='init'>
-    window.onload = () => {
+    function initialize() {
+      debugger;
       // render initial state to DOM
       const initialItem = incrementor.renderCurrent();
       document.getElementById('steps-history').appendChild(initialItem);
-      //  PS. JSON.stringify ignores methods!
       log.push({
-        initialState: JSON.parse(JSON.stringify(incrementor))
+        initialItem,
+        initialState: JSON.parse(JSON.stringify(incrementor.state))
       });
     };
+    window.onload = initialize;
   </script>
 </head>
 

@@ -6,14 +6,13 @@ function setStepSizeHandler(event) {
   const newStepSize = Number(newStepSizeStr);
 
   // update state
-  incrementor.stepSize = newStepSize;
+  incrementor.state.stepSize = newStepSize;
 
   // log interaction
-  //  PS. JSON.stringify ignores methods!
   log.push({
     interaction: 'set step size',
     newStepSize,
-    newState: JSON.parse(JSON.stringify(incrementor))
+    newState: JSON.parse(JSON.stringify(incrementor.state))
   });
 }
 document.getElementById('set-step-size-button').addEventListener('click', setStepSizeHandler);

@@ -1,14 +1,13 @@
-window.onload = () => {
-  // render initial state to DOM
-  document.getElementById('step-size-input').value = incrementor.stepSize;
+function init() {
+  debugger;
 
-  const renderedCurrent = incrementor.renderCurrent();
-  document.getElementById('steps-history').innerHTML = '';
-  document.getElementById('steps-history').appendChild(renderedCurrent);
+  document.getElementById('step-size-input').value = incrementor.state.stepSize;
+  const initialItem = incrementor.renderCurrent();
+  document.getElementById('steps-history').appendChild(initialItem);
 
-  // log interaction
-  //  PS. JSON.stringify ignores methods!
   log.push({
+    initialItem,
     initialState: JSON.parse(JSON.stringify(incrementor))
   });
 };
+window.onload = init;

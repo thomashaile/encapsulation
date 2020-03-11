@@ -7,20 +7,23 @@
   <style></style>
   <script id='app'>
     const incrementor = {
-      current: 0,
-      stepSize: 1,
+      state: {
+        current: 0,
+        stepSize: 1,
+      },
       increment: function () {
-        const newCurrent = this.current + this.stepSize;
-        this.current = newCurrent;
+        const newCurrent = this.state.current + this.state.stepSize;
+        this.state.current = newCurrent;
       },
       renderCurrent: function () {
         const initialLi = document.createElement('li');
-        initialLi.innerHTML = this.current;
+        initialLi.innerHTML = this.state.current;
         return initialLi;
       },
       renderStep: function (stepSize, value) {
         const li = document.createElement('li');
-        li.innerHTML = '... + ' + this.stepSize + ' = ' + this.current;
+        li.innerHTML = '... + ' + this.state.stepSize
+          + ' = ' + this.state.current;
         return li;
       }
     };
@@ -29,13 +32,15 @@
     const log = [];
   </script>
   <script id='init'>
-    window.onload = () => {
+    function initialize() {
       const initialItem = incrementor.renderCurrent();
       document.getElementById('steps-history').appendChild(initialItem);
       log.push({
-        initialState: JSON.parse(JSON.stringify(incrementor))
+        initialItem,
+        initialState: JSON.parse(JSON.stringify(incrementor.state))
       });
     };
+    window.onload = initialize;
   </script>
 </head>
 
@@ -53,10 +58,10 @@
       // update DOM from state
       const newStepComponent = incrementor.renderStep();
       document.getElementById('steps-history').appendChild(newStepComponent);
-      //  PS. JSON.stringify ignores methods
       log.push({
         interaction: 'increment',
-        newState: JSON.parse(JSON.stringify(incrementor))
+        newStepComponent,
+        newState: JSON.parse(JSON.stringify(incrementor.state))
       });
     }
     document.getElementById('increment-button').addEventListener('click', incrementHandler);
