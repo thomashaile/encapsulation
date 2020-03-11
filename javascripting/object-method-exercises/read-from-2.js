@@ -10,7 +10,7 @@ console.assert(test1, `Test 1`);
 const test2 = obj.concat('--') === '--';
 console.assert(test2, `Test 2`);
 
-const test = obj.word === '';
+const test3 = obj.word === '';
 console.assert(test3, 'Test 3');
 
 obj.word = 'hoy';
