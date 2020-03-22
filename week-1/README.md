@@ -47,17 +47,15 @@ Starting with the exercises will make it easier to complete the project.  Spendi
 
 #### Integrating JavaScript
 
-* Complete 2 [JavaScript 30](https://javascript30.com/) challenges, your choice!
-  * Or mostly your choice. Complete ones that use JS, not just HTML & CSS
-  * Link to the repositories with your finished code & notes in your homework issue
+* Form a group of 2-3 and Complete 1 [JavaScript 30](https://github.com/hackyourfuturebelgium/javascript-30) group challenge, your choice!
+  * Link to your team's main repository in your homework issue
 
 #### Challenge Exercises
 
 * (_Isolate_) Begin [FCC Functional Programming](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/)
 * (_Isolate_) Begin [FCC Intermediate Algorithm Scripting](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/intermediate-algorithm-scripting/)
 * (_Isolate_) Fork [javascript-exercises](https://github.com/TheOdinProject/javascript-exercises)
-* (_Isolate_) Complete [js-exercises-tdd](https://github.com/CodeYourFuture/js-exercises-tdd)
-* (_Isolate_) Keep learning about TDD: [what is TDD?](https://duckduckgo.com/?q=what+is+tdd%3F&iax=videos&ia=videos), [online TDD exercises (no NPM troubles :)](http://janke-learning.org/tdd/)
+* (_Isolate_) Keep learning about TDD: [what is TDD?](https://duckduckgo.com/?q=what+is+tdd%3F&iax=videos&ia=videos)
 
 ### Project: `practical-javascript`
 

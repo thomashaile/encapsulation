@@ -1,33 +1,3 @@
-{
-  const configSchema = {
-    container: 'string, element, empty',
-    type: 'string, what kind of code-along to render.  javascript/js or document for now',
-    title: 'string, to become a main header',
-    source: 'undefined -> empty code-along. string -> fetch from relative path. object -> name & path. array of strings or objects -> tabbed the-previous-things'
-  }
-
-  const resultSchema = { // future plans
-    config: 'the unmodified config object',
-    container: "element with input & output containers",
-    editor: 'ace editor',
-    resultsEl: 'coupler',
-    active: "the active step object",
-    steps: {
-      type: 'array',
-      description: 'if no steps, empty editor/results. if 1 step, no tabs. if 2+ steps, tab-it',
-      items: {
-        path: "relative path to file",
-        code: "the code",
-        session: "ace session",
-        results: "element with name & most recent evaluation",
-        button: "the button that goes up top",
-        name: "given or default name "
-      }
-    }
-  }
-}
-
-// do this with highlight.js? - nope, then extra dependency
 const codeAlongGuide = `evaluate code: will run the code in the current editor ---
     ... capture asserts to display pass/fail
     ... try to stop your code after 1000+ loop iterations
@@ -59,7 +29,7 @@ Format Code: will make code in the current editor prettier ---
 // - changes ARE NOT saved when you refresh the web page
 // - changes ARE saved when switching between exercises
 
-
+// async errors - instancing will fix this
 
 async function codeAlong(config) {
 
@@ -445,8 +415,9 @@ codeAlong.js = (iframe, steps, config) => {
   evaluateInCodeAlong.innerHTML = 'evaluate code';
   evaluateInCodeAlong.addEventListener('click', function evaluateCode() {
     resultsContainer.innerHTML = '';
-    const results = codeAlong.preparing_your_code(editor.getValue());
-    resultsContainer.appendChild(results);
+    codeAlong.preparing_your_code(editor.getValue(), resultsContainer);
+    // const results = codeAlong.preparing_your_code(editor.getValue());
+    // resultsContainer.appendChild(results);
   });
 
   function step_through_in_debugger() {
@@ -650,13 +621,14 @@ codeAlong.js = (iframe, steps, config) => {
 
   const evalButton = document.createElement('button');
   evalButton.innerHTML = '&nbsp; &nbsp; run code &nbsp; &nbsp;';
-  evalButton.addEventListener('click', function eval_code() {
+  // bind to window for this-ing
+  evalButton.addEventListener('click', (function eval_code() {
     try {
       eval(editor.getValue())
     } catch (err) {
       console.log(err);
     }
-  });
+  }).bind(window));
 
   collapsedOutput.appendChild(evalButton);
   const evaluateInDebuggerCopy = evaluateInDebugger.cloneNode(true);
@@ -710,7 +682,8 @@ codeAlong.js = (iframe, steps, config) => {
 
 }
 
-codeAlong.step_through_in_debugger = function in_debugger(your_source_code) {
+// binding evaluation function to window for arrow function correctness
+codeAlong.step_through_in_debugger = (function in_debugger(your_source_code) {
   try {
     const executing_your_code = () => {
       eval(
@@ -724,9 +697,9 @@ codeAlong.step_through_in_debugger = function in_debugger(your_source_code) {
     console.log(err);
   };
   return "    All done! \n\n    (psst. try again with devtools open if they aren't already)";
-}
+}).bind(window);
 
-codeAlong.format_and_loop_guard = function with_infinite_loop_guard(your_source_code, max_iterations) {
+codeAlong.format_and_loop_guard = (function with_infinite_loop_guard(your_source_code, max_iterations) {
   let number_of_loops = 0;
   try {
     eval(
@@ -747,8 +720,9 @@ codeAlong.format_and_loop_guard = function with_infinite_loop_guard(your_source_
     console.log(err);
   };
   return "     All done! \n\n     (psst. your devtools must be open)";
-}
-codeAlong.with_infinite_loop_guard = function with_infinite_loop_guard(your_source_code, max_iterations) {
+}).bind(window);
+
+codeAlong.with_infinite_loop_guard = (function with_infinite_loop_guard(your_source_code, max_iterations) {
   let number_of_loops = 0;
   try {
     eval(
@@ -764,11 +738,11 @@ codeAlong.with_infinite_loop_guard = function with_infinite_loop_guard(your_sour
     console.log(err);
   };
   return "     All done! \n\n     (psst. your devtools must be open)";
-}
+}).bind(window);
 
 
-codeAlong.preparing_your_code = function (your_source_code) {
-  const resultsEl = document.createElement('ol');
+codeAlong.preparing_your_code = function (your_source_code, resultsContainer) {
+  // const resultsEl = document.createElement('ol');
 
   const nativeConsole = console;
   console = Object.create(nativeConsole);
@@ -793,7 +767,8 @@ codeAlong.preparing_your_code = function (your_source_code) {
     newLi.appendChild(statusEl);
     newLi.appendChild(messages);
 
-    resultsEl.appendChild(newLi);
+    resultsContainer.appendChild(newLi);
+    // resultsEl.appendChild(newLi);
 
   }
 
@@ -895,14 +870,16 @@ codeAlong.preparing_your_code = function (your_source_code) {
     const errOrWarning = err.message === 'Loop exceeded 1000 iterations'
       ? renderHaltingWarning(err)
       : renderError(err);
-    resultsEl.appendChild(errOrWarning);
-    resultsEl.appendChild(renderPhase(didExecute));
+    resultsContainer.appendChild(errOrWarning);
+    resultsContainer.appendChild(renderPhase(didExecute));
+    // resultsEl.appendChild(errOrWarning);
+    // resultsEl.appendChild(renderPhase(didExecute));
     console.error(err);
   }
 
   console = nativeConsole;
 
-  return resultsEl;
+  // return resultsEl;
 
 }
 
