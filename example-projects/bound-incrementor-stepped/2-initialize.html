@@ -6,7 +6,7 @@
   <title>incrementor with binding</title>
   <style></style>
   <script id='app'>
-    const app = {
+    const incrementor = {
       state: {
         current: 0,
         stepSize: 1
@@ -32,7 +32,7 @@
   </script>
   <script id='init'>
     window.onload = function () {
-      app.init('step-size-input', 'steps-history');
+      incrementor.init('step-size-input', 'steps-history');
       console.log('app is ready');
     }
   </script>

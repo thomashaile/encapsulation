@@ -3,7 +3,7 @@
   <title>incrementor with binding</title>
   <style></style>
   <script id='app'>
-    const app = {
+    const incrementor = {
       state: {
         current: 0,
         stepSize: 1
@@ -70,7 +70,7 @@
   </script>
   <script id='init'>
     window.onload = function () {
-      app.init('step-size-input', 'steps-history');
+      incrementor.init('step-size-input', 'steps-history');
       console.log('app is ready');
     }
   </script>
@@ -88,13 +88,13 @@
   </section>
 
   <script id='interactions'>
-    const incrementHandler = app.handleIncrement.bind(app, 'steps-history');
+    const incrementHandler = incrementor.handleIncrement.bind(app, 'steps-history');
     document.getElementById('increment-button').addEventListener('click', incrementHandler);
 
-    const setStepSizeHandler = app.handleSetStepSize.bind(app, 'step-size-input');
+    const setStepSizeHandler = incrementor.handleSetStepSize.bind(app, 'step-size-input');
     document.getElementById('set-step-size-button').addEventListener('click', setStepSizeHandler);
 
-    const resetHandler = app.handleReset.bind(app, 'step-size-input', 'steps-history');
+    const resetHandler = incrementor.handleReset.bind(app, 'step-size-input', 'steps-history');
     document.getElementById('reset-button').addEventListener('click', resetHandler);
   </script>
 </body>

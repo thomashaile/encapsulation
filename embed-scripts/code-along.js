@@ -689,15 +689,15 @@ codeAlong.js = (iframe, steps, config) => {
 //   and still does arrows correctly
 codeAlong.step_through_in_debugger = (function in_debugger(your_source_code) {
   const executing_your_code = eval;
-  try {
-    executing_your_code(
-      'debugger; // injected by codeAlong\n'
-      + '\n'
-      + your_source_code
-    );
-  } catch (err) {
-    console.log(err);
-  };
+  // try {
+  executing_your_code(
+    'debugger; // injected by codeAlong\n'
+    + '\n'
+    + your_source_code
+  );
+  // } catch (err) {
+  //   console.log(err);
+  // };
   return "    All done! \n\n    (psst. try again with devtools open if they aren't already)";
 }).bind(window);
 // codeAlong.step_through_in_debugger = (function in_debugger(your_source_code) {
