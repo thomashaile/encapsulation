@@ -77,10 +77,10 @@
   </section>
 
   <script id='interactions'>
-    const incrementHandler = incrementor.handleIncrement.bind(app, 'steps-history');
+    const incrementHandler = incrementor.handleIncrement.bind(incrementor, 'steps-history');
     document.getElementById('increment-button').addEventListener('click', incrementHandler);
 
-    const setStepSizeHandler = incrementor.handleSetStepSize.bind(app, 'step-size-input');
+    const setStepSizeHandler = incrementor.handleSetStepSize.bind(incrementor, 'step-size-input');
     document.getElementById('set-step-size-button').addEventListener('click', setStepSizeHandler);
   </script>
 </body>
