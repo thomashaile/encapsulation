@@ -26,14 +26,18 @@ const obj3 = {
   boundToObj2
 };
 
-const test1 = obj3.returnThis() === obj3;
+const thisObj3 = obj3.returnThis();
+const test1 = thisObj3 === obj3;
 console.assert(test1, 'Test 1');
 
-const test2 = obj3.boundToWindow() === window;
+const thisWindow = obj3.boundToWindow();
+const test2 = thisWindow === window;
 console.assert(test2, 'Test 2');
 
-const test3 = obj3.boundToObj1() === obj1;
+const thisObj1 = obj3.boundToObj1()
+const test3 = thisObj1 === obj1;
 console.assert(test3, 'Test 3');
 
-const test4 = obj3.boundToObj2() === obj2;
+const thisObj2 = obj3.boundToObj2();
+const test4 = thisObj2 === obj2;
 console.assert(test4, 'Test 4');
