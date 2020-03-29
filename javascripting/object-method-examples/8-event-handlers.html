@@ -10,17 +10,12 @@
         'Do laundry',
       ],
       _container: null,
-      addTodo(event) {
-        event.preventDefault();
-        
-        const formData = new FormData(event.target);;
-        const todo = formData.get('text');
-        
-        if (todo.length === 0) {
+      addTodo(text) {
+        if (text.length === 0) {
           return;
         }
         
-        this._todos.push(todo);
+        this._todos.push(text);
         this.renderTodos();
       },
       renderTodos() {
@@ -46,7 +41,7 @@
 
 <body>
 <section id='user-interface'>
-  <form id="add-todo" onsubmit="todoList.addTodo(event)">
+  <form id="add-todo">
     <input id="text" name="text" placeholder="Add a todo" type="text" />
     <button type="submit">Add todo</button>
   </form>
@@ -54,6 +49,13 @@
 </section>
 
 <script id='interactions'>
+  document.getElementById('add-todo').addEventListener('submit', event => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    
+    todoList.addTodo(formData.get('text'));
+  })
 </script>
 </body>
 
