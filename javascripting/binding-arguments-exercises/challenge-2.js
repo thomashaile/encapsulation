@@ -7,7 +7,7 @@ const obj3 = { thing: true };
 
 function addThem(boundArg, freeArg) {
   return this.thing + boundArg + freeArg;
-};
+}
 
 // do write code here
 

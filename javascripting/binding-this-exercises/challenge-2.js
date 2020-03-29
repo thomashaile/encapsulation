@@ -7,7 +7,7 @@ const objC = { thing: false };
 
 // do write code here
 
-function writeMe() { };
+function writeMe() { }
 
 
 // don't change this code
