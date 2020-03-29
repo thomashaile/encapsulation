@@ -27,10 +27,10 @@ const boundWithOdd = evenAndOdd.pushTo.bind(evenAndOdd, 'odd');
 const boundWithNany = evenAndOdd.pushTo.bind(evenAndOdd, 'nany');
 
 boundWithEven('4');
-boundWithOdd('3');
-boundWithNany('f');
 boundWithEven('6');
+boundWithOdd('3');
 boundWithOdd('5');
+boundWithNany('f');
 boundWithNany('g');
 
 const test4 = JSON.stringify(evenAndOdd.state.even) === '["2","4","6"]';
