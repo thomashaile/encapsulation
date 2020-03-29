@@ -6,7 +6,7 @@ function addToWord(letter) {
 }
 
 const obj1 = {
-  word: ''
+  word: '1'
 };
 
 const boundObj1x = addToWord.bind(obj1, 'x');
@@ -23,7 +23,7 @@ console.assert(obj1.word === 'xxy', 'Test 3');
 
 
 const obj2 = {
-  word: ''
+  word: '2'
 };
 
 const boundObj2a = addToWord.bind(obj2, 'a');

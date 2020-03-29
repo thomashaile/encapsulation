@@ -725,7 +725,7 @@ codeAlong.format_and_loop_guard = (function with_infinite_loop_guard(your_source
       + js_beautify(
         your_source_code.replace(/for *\(.*\{|while *\(.*\{|do *\{/g, loopHead => {
           number_of_loops++;
-          return `let loop_${number_of_loops}_iterations = 0; // injected by codeAlong\n ${loopHead}\n if (++loop_${number_of_loops}_iterations > ${max_iterations}) {console.log('Loop ${number_of_loops} exceeded ${max_iterations} iterations'); break;} // injected by codeAlong\n`
+          return `let loop_${number_of_loops}_iterations = 0; // injected by codeAlong\n ${loopHead}\n if (++loop_${number_of_loops}_iterations > ${max_iterations}) {throw 'Loop ${number_of_loops} exceeded ${max_iterations} iterations';} // injected by codeAlong\n`
         }),
         {
           indent_size: '  ',
@@ -748,7 +748,7 @@ codeAlong.with_infinite_loop_guard = (function with_infinite_loop_guard(your_sou
       +
       your_source_code.replace(/for *\(.*\{|while *\(.*\{|do *\{/g, loopHead => {
         number_of_loops++;
-        return `let loop_${number_of_loops}_iterations = 0; // injected by codeAlong\n ${loopHead}\n if (++loop_${number_of_loops}_iterations > ${max_iterations}) {console.log('Loop ${number_of_loops} exceeded ${max_iterations} iterations'); break;} // injected by codeAlong\n`
+        return `let loop_${number_of_loops}_iterations = 0; // injected by codeAlong\n ${loopHead}\n if (++loop_${number_of_loops}_iterations > ${max_iterations}) {throw 'Loop ${number_of_loops} exceeded ${max_iterations} iterations';} // injected by codeAlong\n`
       })
     );
   } catch (err) {
