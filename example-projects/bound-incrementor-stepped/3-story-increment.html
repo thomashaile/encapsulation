@@ -41,7 +41,7 @@
           newState: JSON.parse(JSON.stringify(this.state))
         });
       },
-      init: function (inputId, listId) {
+      init: function (listId) {
         const initialItem = this.renderCurrent();
         document.getElementById(listId).appendChild(initialItem);
         this.log.push({
@@ -53,7 +53,7 @@
   </script>
   <script id='init'>
     window.onload = function () {
-      incrementor.init('step-size-input', 'steps-history');
+      incrementor.init('steps-history');
       console.log('app is ready');
     }
   </script>

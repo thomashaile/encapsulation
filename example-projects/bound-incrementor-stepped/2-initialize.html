@@ -17,7 +17,7 @@
         initialLi.innerHTML = this.state.current;
         return initialLi;
       },
-      init: function (inputId, listId) {
+      init: function (listId) {
         debugger;
         // render initial dom from state
         const initialItem = this.renderCurrent();
@@ -32,7 +32,7 @@
   </script>
   <script id='init'>
     window.onload = function () {
-      incrementor.init('step-size-input', 'steps-history');
+      incrementor.init('steps-history');
       console.log('app is ready');
     }
   </script>
