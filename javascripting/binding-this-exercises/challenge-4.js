@@ -1,4 +1,6 @@
-// psst. use the debugger!
+// this one is extra tricky
+//  move on to Binding Arguments if it's taking more than a few mintues
+//  you can always come back to it later
 
 const obj = {};
 
