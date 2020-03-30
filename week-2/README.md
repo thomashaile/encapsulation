@@ -2,6 +2,8 @@
 
 * [Prep Work](#prep-work)
 * [Lesson Plan](#lesson-plan)
+  * [Isolate](#isolate)
+  * [Integrate](#integrate)
 * [Assignments](#assignments)
   * [Exercises](#exercises)
   * [Project](#project)
@@ -24,7 +26,19 @@ Study the [Sunday lesson plan](https://hackyourfuture.be/encapsulation/week-2) s
 
 ## Lesson Plan
 
-* [Slide show is right here](https://hackyourfuture.be/encapsulation/week-2) - Be sure to look over the slides before coming in on Sunday!
+> [Lesson Plan Slides](https://hackyourfuture.be/encapsulation/week-2)
+
+This Sunday's lesson plan focuses on _binding_: how it works in memory, why it's important, and how to use it for OOP handlers.
+
+### Isolate
+
+* Binding this: [examples](../javascripting/binding-this-examples/REVIEW.md), [exercises](../javascripting/binding-this-exercises/REVIEW.md)
+* Binding arguments: [examples](../javascripting/binding-arguments-examples/REVIEW.md), [exercises](../javascripting/binding-arguments-exercises/REVIEW.md)
+
+### Integrate
+
+* Bound Incrementor (example): [stepped](../example-projects/bound-incrementor-stepped), [separated](../example-projects/bound-incrementor-separated)
+* [Entries w/ Binding Handlers](https://github.com/hackyourfuturebelgium/entries-binding-handlers) (starter repo)
 
 ---
 
