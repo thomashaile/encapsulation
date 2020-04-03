@@ -6,10 +6,10 @@
 //  horray for JS compatibility!
 
 function returnThis() {
-  return this;
+    return this;
 }
 
-const boundToWindow = returnThis.bind(window);
+const boundToWindow = returnThis.bind(global);
 
 const obj1 = { id: 1 };
 const boundToObj1 = returnThis.bind(obj1);
@@ -19,11 +19,11 @@ const boundToObj2 = returnThis.bind(obj2);
 
 
 const obj3 = {
-  id: 3,
-  returnThis,
-  boundToWindow,
-  boundToObj1,
-  boundToObj2
+    id: 3,
+    returnThis,
+    boundToWindow,
+    boundToObj1,
+    boundToObj2
 };
 
 const thisObj3 = obj3.returnThis();
@@ -31,7 +31,7 @@ const test1 = thisObj3 === obj3;
 console.assert(test1, 'Test 1');
 
 const thisWindow = obj3.boundToWindow();
-const test2 = thisWindow === window;
+const test2 = thisWindow === global;
 console.assert(test2, 'Test 2');
 
 const thisObj1 = obj3.boundToObj1()

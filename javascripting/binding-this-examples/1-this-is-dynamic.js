@@ -7,18 +7,18 @@
 //  horray for JS compatibility!
 
 function returnThis() {
-  return this;
+    return this;
 }
 
 
 const calledGlobally1 = returnThis();
-const returnsWindow1 = calledGlobally1 === window;
+const returnsWindow1 = calledGlobally1 === global;
 console.assert(returnsWindow1, 'called globally 1');
 
 
 const obj1 = {
-  id: 1,
-  returnThis
+    id: 1,
+    returnThis
 };
 
 const calledOnObj1 = obj1.returnThis();
@@ -35,11 +35,10 @@ console.assert(returnsObj2, 'called on object 2');
 
 
 const calledGlobally2 = returnThis();
-const returnsWindow2 = calledGlobally2 === window;
+const returnsWindow2 = calledGlobally2 === global;
 console.assert(returnsWindow2, 'called globally 2');
 
 
-const alwaysTheSameFunction = returnThis === obj1.returnThis
-  && obj1.returnThis === obj2.method;
+const alwaysTheSameFunction = returnThis === obj1.returnThis &&
+    obj1.returnThis === obj2.method;
 console.assert(alwaysTheSameFunction, 'always the same function!');
-
