@@ -1,16 +1,16 @@
 const counter = {
-  state: {
-    count: 0
-  },
-  get count() {
-    return this.state.count;
-  },
-  up: function () {
-    this.state.count += 1;
-  },
-  down: function () {
-    this.state.count -= 1;
-  }
+    state: {
+        count: 0
+    },
+    get count() {
+        return this.state.count;
+    },
+    up: function() {
+        this.state.count += 1;
+    },
+    down: function() {
+        this.state.count -= 1;
+    }
 };
 
 counter.up();
@@ -25,12 +25,12 @@ console.assert(test2, 'Test 2');
 const unBoundUp = counter.up;
 const unBoundDown = counter.down;
 try {
-  unBoundUp();
-  console.assert(counter.count === 1, 'Test 3');
-  unBoundDown();
-  console.assert(counter.count === 0, 'Test 4');
+    unBoundUp();
+    console.assert(counter.count === 1, 'Test 3');
+    unBoundDown();
+    console.assert(counter.count === 0, 'Test 4');
 } catch (err) {
-  console.assert(false, err.name + ': ' + err.message);
+    console.assert(false, err.name + ': ' + err.message);
 }
 
 
