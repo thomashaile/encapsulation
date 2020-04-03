@@ -2,7 +2,15 @@
 //  move on to Binding Arguments if it's taking more than a few mintues
 //  you can always come back to it later
 
-const obj = {};
+const obj = {
+    current: 0,
+    obj: function() {
+
+    },
+    method: function(current) {
+        return this.current += current;
+    }
+};
 
 // don't change the code below this line
 const boundMethod = obj.method.bind(obj);
