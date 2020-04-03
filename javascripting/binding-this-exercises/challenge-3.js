@@ -2,17 +2,20 @@
 //   psst. use the debugger!
 
 const obj1 = {
-  id: 1,
-  x: true
+    id: 1,
+    x: false
 };
 
 const obj2 = {
-  id: 2,
-  list: [1, 2, 3],
+    id: 2,
+    list: [1, 2, 3].reverse(),
+    friend: obj1
 };
 
 const obj3 = {
-  id: 3,
+    id: 3,
+    foo: 'bar',
+    friend: obj2
 };
 
 // don't change any code below this comment

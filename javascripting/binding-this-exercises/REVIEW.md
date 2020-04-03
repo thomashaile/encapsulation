@@ -1,37 +1,40 @@
 # encapsulation/javascripting/
 
-> 3/30/2020, 10:36:03 AM 
+> 4/3/2020, 3:17:12 PM 
 
-## binding-this-exercises/ - error
+## binding-this-exercises/ - fail
 
 * [../REVIEW.md](../REVIEW.md)
 
 ### files
 
-* [challenge-1.js](#challenge-1js---fail) - fail
-* [challenge-2.js](#challenge-2js---error) - error
-* [challenge-3.js](#challenge-3js---fail) - fail
-* [challenge-4.js](#challenge-4js---error) - error
+* [challenge-1.js](#challenge-1js---pass) - pass
+* [challenge-2.js](#challenge-2js---pass) - pass
+* [challenge-3.js](#challenge-3js---pass) - pass
+* [challenge-4.js](#challenge-4js---fail) - fail
 
 ---
 
-## challenge-1.js - fail
+## challenge-1.js - pass
 
 * [review source](challenge-1.js)
 
 ```txt
-- FAIL: Test 1.A
-- FAIL: Test 1.B
-- FAIL: Test 2.A
-- FAIL: Test 2.B
-- FAIL: Test 3.A
-- FAIL: Test 3.B
++ PASS: Test 1.A
++ PASS: Test 1.B
++ PASS: Test 2.A
++ PASS: Test 2.B
++ PASS: Test 3.A
++ PASS: Test 3.B
 ```
 
 ```js
 // psst. use the debugger!
 
-function writeMe(arg) { };
+function writeMe(arg) {
+    arg = this.thing + arg
+    return arg
+};
 
 // don't change any code below this comment
 const obj1 = { thing: 1 };
@@ -68,29 +71,23 @@ console.assert(test3a, 'Test 3.A');
 const result3b = bound3(undefined);
 const test3b = Number.isNaN(result3b);
 console.assert(test3b, 'Test 3.B');
-
 ```
 
 [TOP](#encapsulation/javascripting)
 
 ---
 
-## challenge-2.js - error
+## challenge-2.js - pass
 
 * [review source](challenge-2.js)
 
 ```txt
-ReferenceError: boundA is not defined
-    at Object.<anonymous> ( [...] /binding-this-exercises/challenge-2.js:15:17)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
-    at evaluateFile ( [...] /review.js:101:5)
-    at  [...] /review.js:139:28
-    at Array.map (<anonymous>)
++ PASS: Test 1
++ PASS: Test 2
++ PASS: Test 3
++ PASS: Test 4
++ PASS: Test 5
++ PASS: Test 6
 ```
 
 ```js
@@ -103,8 +100,12 @@ const objC = { thing: false };
 
 // do write code here
 
-function writeMe() { }
-
+function writeMe() {
+    return this.thing
+}
+const boundA = writeMe.bind(objA);
+const boundB = writeMe.bind(objB);
+const boundC = writeMe.bind(objC);
 
 // don't change this code
 
@@ -131,23 +132,22 @@ console.assert(test5, 'Test 5');
 const result6 = boundC() + 12;
 const test6 = result6 === 12;
 console.assert(test6, 'Test 6');
-
 ```
 
 [TOP](#encapsulation/javascripting)
 
 ---
 
-## challenge-3.js - fail
+## challenge-3.js - pass
 
 * [review source](challenge-3.js)
 
 ```txt
-- FAIL: Test 1
-- FAIL: Test 2
-- FAIL: Test 3
-- FAIL: Test 4
-- FAIL: Test 5
++ PASS: Test 1
++ PASS: Test 2
++ PASS: Test 3
++ PASS: Test 4
++ PASS: Test 5
 ```
 
 ```js
@@ -155,17 +155,20 @@ console.assert(test6, 'Test 6');
 //   psst. use the debugger!
 
 const obj1 = {
-  id: 1,
-  x: true
+    id: 1,
+    x: false
 };
 
 const obj2 = {
-  id: 2,
-  list: [1, 2, 3],
+    id: 2,
+    list: [1, 2, 3].reverse(),
+    friend: obj1
 };
 
 const obj3 = {
-  id: 3,
+    id: 3,
+    foo: 'bar',
+    friend: obj2
 };
 
 // don't change any code below this comment
@@ -194,29 +197,24 @@ console.assert(test4, 'Test 4');
 
 const test5 = this2.friend === this1;
 console.assert(test5, 'Test 5');
-
 ```
 
 [TOP](#encapsulation/javascripting)
 
 ---
 
-## challenge-4.js - error
+## challenge-4.js - fail
 
 * [review source](challenge-4.js)
 
 ```txt
-TypeError: Cannot read property 'bind' of undefined
-    at Object.<anonymous> ( [...] /binding-this-exercises/challenge-4.js:8:32)
-    at Module._compile (internal/modules/cjs/loader.js:777:30)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
-    at Module.load (internal/modules/cjs/loader.js:643:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
-    at Module.require (internal/modules/cjs/loader.js:683:19)
-    at require (internal/modules/cjs/helpers.js:16:16)
-    at evaluateFile ( [...] /review.js:101:5)
-    at  [...] /review.js:139:28
-    at Array.map (<anonymous>)
++ PASS: Test 0
++ PASS: Test 1.A
+- FAIL: Test 1.B
++ PASS: Test 2.A
+- FAIL: Test 2.B
++ PASS: Test 3.A
+- FAIL: Test 3.B
 ```
 
 ```js
@@ -224,7 +222,15 @@ TypeError: Cannot read property 'bind' of undefined
 //  move on to Binding Arguments if it's taking more than a few mintues
 //  you can always come back to it later
 
-const obj = {};
+const obj = {
+    current: 0,
+    obj: function() {
+
+    },
+    method: function(current) {
+        return this.current += current;
+    }
+};
 
 // don't change the code below this line
 const boundMethod = obj.method.bind(obj);
@@ -249,7 +255,6 @@ const test3a = obj.current === 6;
 const test3b = result3 === 4;
 console.assert(test3a, 'Test 3.A');
 console.assert(test3b, 'Test 3.B');
-
 ```
 
 [TOP](#encapsulation/javascripting)

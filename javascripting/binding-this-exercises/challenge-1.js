@@ -1,6 +1,9 @@
 // psst. use the debugger!
 
-function writeMe(arg) { };
+function writeMe(arg) {
+    arg = this.thing + arg
+    return arg
+};
 
 // don't change any code below this comment
 const obj1 = { thing: 1 };
