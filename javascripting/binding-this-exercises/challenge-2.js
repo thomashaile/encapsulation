@@ -7,8 +7,12 @@ const objC = { thing: false };
 
 // do write code here
 
-function writeMe() { }
-
+function writeMe() {
+    return this.thing
+}
+const boundA = writeMe.bind(objA);
+const boundB = writeMe.bind(objB);
+const boundC = writeMe.bind(objC);
 
 // don't change this code
 
